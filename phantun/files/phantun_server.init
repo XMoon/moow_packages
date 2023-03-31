@@ -1,0 +1,148 @@
+#!/bin/sh /etc/rc.common
+#
+# Copyright (C) 2022-2022 XMoon <xmoon@live.cn>
+#
+# This is free software, licensed under the GNU General Public License v3.
+# See /LICENSE for more information.
+#
+
+START=90
+STOP=15
+USE_PROCD=1
+NAME=phantun_server
+
+init_conf() {
+    config_load "$NAME"
+    config_get "enable" "config" "enable" "0"
+    config_get "local_port" "config" "local_port"
+    config_get "remote_ip" "config" "remote_ip"
+    config_get "remote_port" "config" "remote_port"
+    config_get "tun" "config" "tun"
+}
+
+uci_quiet() {
+    uci -q "${@}" >/dev/null
+}
+
+uciadd() {
+    init_conf
+    iface=$NAME
+    
+    /etc/init.d/$NAME running && {
+        echo "Please stop $NAME service first"
+        exit 0
+    }
+
+    # add network interface
+    if ! uci_quiet get network.${iface}; then
+        logger -t "$NAME-init" -p notice "Adding interface '${iface}' to network config"
+        uci_quiet add network interface
+        uci_quiet rename network.@interface[-1]="${iface}"
+        uci_quiet set network.@interface[-1].device="${tun}"
+        uci_quiet set network.@interface[-1].proto="none"
+        uci_quiet set network.@interface[-1].defaultroute="0"
+        uci_quiet set network.@interface[-1].peerdns="0"
+        uci_quiet set network.@interface[-1].delegate="0"
+        uci_quiet commit network
+        /etc/init.d/network reload >/dev/null 2>&1
+    fi
+    
+    # add firewall redirect rule
+    ADD_V4=1
+    ADD_V6=1
+    cnt=0
+    while [ -n "$(uci -q get firewall.@redirect["${cnt}"].name)" ]; do
+        if [ "$(uci -q get firewall.@redirect["${cnt}"].name)" = "${NAME}_v4" ];then
+            ADD_V4=0
+        fi
+        if [ "$(uci -q get firewall.@redirect["${cnt}"].name)" = "${NAME}_v6" ];then
+            ADD_V6=0
+        fi
+        cnt=$((cnt + 1))
+    done
+    if [ $ADD_V4 = 1 ];then
+        uci_quiet add firewall redirect
+        uci_quiet rename firewall.@redirect[-1]="${NAME}_v4"
+        uci_quiet set firewall.@redirect[-1].target='DNAT'
+        uci_quiet set firewall.@redirect[-1].src='wan'
+        uci_quiet set firewall.@redirect[-1].dest='lan'
+        uci_quiet set firewall.@redirect[-1].src_dport="${local_port}"
+        uci_quiet set firewall.@redirect[-1].dest_ip='192.168.201.2'
+        uci_quiet set firewall.@redirect[-1].proto='tcp'
+    fi
+    if [ $ADD_V6 = 1 ];then
+        uci_quiet add firewall redirect
+        uci_quiet rename firewall.@redirect[-1]="${NAME}_v6"
+        uci_quiet set firewall.@redirect[-1].target='DNAT'
+        uci_quiet set firewall.@redirect[-1].src='wan'
+        uci_quiet set firewall.@redirect[-1].dest='lan'
+        uci_quiet set firewall.@redirect[-1].src_dport="${local_port}"
+        uci_quiet set firewall.@redirect[-1].dest_ip='fcc9::2'
+        uci_quiet set firewall.@redirect[-1].proto='tcp'
+    fi
+    if [ $ADD_V4 = 1 ] || [ $ADD_V6 = 1 ];then
+        uci_quiet commit firewall
+        /etc/init.d/firewall reload >/dev/null 2>&1
+    fi
+}
+
+ucidel() {
+    init_conf
+    iface=$NAME
+    
+    /etc/init.d/$NAME running && {
+        echo "Please stop $NAME service first"
+        exit 0
+    }
+
+    # del network interface
+    if uci_quiet get network.${iface}; then
+        logger -t "$NAME-init" -p notice "deleting interface '${iface}' to network config"
+        uci_quiet delete network.${iface}
+        uci_quiet commit network
+        /etc/init.d/network reload >/dev/null 2>&1
+    fi
+
+    # del firewall redirect rule
+    cnt=0
+    while [ -n "$(uci -q get firewall.@redirect["${cnt}"].name)" ]; do
+        if [ "$(uci -q get firewall.@redirect["${cnt}"].name)" = "$NAME" ];then
+            uci_quiet delete firewall.@redirect["${cnt}"]
+            uci_quiet commit firewall
+            /etc/init.d/firewall reload >/dev/null 2>&1
+            break
+        fi
+        cnt=$((cnt + 1))
+    done
+}
+
+start_service() {
+    init_conf
+
+    [ "${enable}" = "1" ] || return 0
+
+    uciadd
+
+    procd_open_instance $NAME
+    procd_set_param command /usr/bin/$NAME --local "${local_port}" --remote "${remote_ip}:${remote_port}" --tun "${tun}"
+    procd_set_param env RUST_LOG=info
+    procd_set_param pidfile /var/run/$NAME.pid
+    procd_set_param nice -5
+    procd_set_param limits nofile="65535 65535"
+    procd_set_param respawn
+    procd_set_param stdout 1
+    procd_set_param stderr 1
+    procd_close_instance
+}
+
+reload_service()
+{
+    stop
+    start
+}
+
+boot() {
+    local delay=10
+    (sleep $delay && start >/dev/null 2>&1) &
+    return 0
+}
