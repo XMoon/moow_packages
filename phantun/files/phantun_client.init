@@ -32,11 +32,6 @@ uciadd() {
     init_conf
     iface=$NAME
     
-    /etc/init.d/$NAME running && {
-        echo "Please stop $NAME service first"
-        exit 0
-    }
-
     # add network interface
     if ! uci_quiet get network.${iface}; then
         logger -t "$NAME-init" -p notice "Adding interface '${iface}' to network config"
