@@ -20,14 +20,13 @@
  *      https://github.com/LuttyYang/luci-theme-material/
  *
  *  Agron Theme
- *	    https://demos.creative-tim.com/argon-dashboard/index.html
+ *      https://demos.creative-tim.com/argon-dashboard/index.html
  *
  *  Login background
  *      https://unsplash.com/
  *
  *  Licensed to the public under the Apache License 2.0
  */
-
 
 
 body {
@@ -130,10 +129,10 @@ header::after {
                 .menu.active {
                     background-color: #483d8b !important;
                     background-color: var(--dark-primary) !important;
-                    color: #cccccc !important;
+                    color: #ffffff !important;
 
                     a::after {
-                        background-color: #cccccc !important;
+                        background-color: #ffffff !important;
                     }
                 }
             }
@@ -146,7 +145,7 @@ header::after {
                 a:hover {
                     background-color: #483d8b !important;
                     background-color: var(--dark-primary) !important;
-                    color: #cccccc !important;
+                    color: #ffffff !important;
                 }
 
             }
@@ -178,14 +177,25 @@ h3 {
     background: #333333;
 }
 
-a:-webkit-any-link {
-    color: #483d8b;
-    color: var(--dark-primary);
+h4 {
+    color: #8C6900;
+}
+
+abbr {
+    color: var(--dark-primary) !important;
+}
+
+a:link, a:visited, a:active {
+    color: #a5b2ff;
 }
 
 
 input:-webkit-autofill {
     background-color: #3c3c3c !important;
+}
+
+#channel_graph {
+    background-color: transparent !important;
 }
 
 .cbi-value-field .cbi-input-apply,
@@ -221,46 +231,46 @@ header.bg-primary {
     background-color: #333333;
 }
 
-div>table>tbody>tr:nth-of-type(2n),
-div>.table>.tr:nth-of-type(2n) {
+div > table > tbody > tr:nth-of-type(2n),
+div > .table > .tr:nth-of-type(2n) {
     background-color: #252526;
 }
 
-table>tbody>tr>td,
-table>tfoot>tr>td,
-table>thead>tr>td {
+table > tbody > tr > td,
+table > tfoot > tr > td,
+table > thead > tr > td {
     color: #cccccc;
 }
 
-fieldset>table>tbody>tr:nth-of-type(2n) {
+fieldset > table > tbody > tr:nth-of-type(2n) {
     background-color: #252526;
 }
 
-table>tbody>tr>td,
-table>tfoot>tr>td,
-table>thead>tr>td {
+table > tbody > tr > td,
+table > tfoot > tr > td,
+table > thead > tr > td {
     border-top: 1px solid #252526;
 }
 
-#swaptotal>div>div,
-#swapfree>div>div,
-#memfree>div>div,
-#membuff>div>div,
-#conns>div>div,
-#memtotal>div>div {
-    background-color: #32325d !important;
+#swaptotal > div > div,
+#swapfree > div > div,
+#memfree > div > div,
+#membuff > div > div,
+#conns > div > div,
+#memtotal > div > div {
+    background-color: var(--dark-primary) !important;
 }
 
-#swaptotal>div>div>div>small,
-#swapfree>div>div>div>small,
-#memfree>div>div>div>small,
-#membuff>div>div>div>small,
-#conns>div>div>div>small,
-#memtotal>div>div>div>small {
+#swaptotal > div > div > div > small,
+#swapfree > div > div > div > small,
+#memfree > div > div > div > small,
+#membuff > div > div > div > small,
+#conns > div > div > div > small,
+#memtotal > div > div > div > small {
     color: #ccc !important;
 }
 
-.node-system-packages>.main .cbi-section-node:first-child .cbi-value-last {
+.node-system-packages > .main .cbi-section-node:first-child .cbi-value-last {
     line-height: 1.8em;
 
     div[style="margin:3px 0; width:300px; height:10px; border:1px solid #000000; background-color:#80C080"] {
@@ -268,25 +278,25 @@ table>thead>tr>td {
         background-color: transparent !important;
 
         div {
-            background-color: #32325d !important;
+            background-color: #ba8b00 !important;
         }
     }
 
 }
 
-table>tbody>tr>th,
-table>tfoot>tr>th,
-table>thead>tr>th {
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > th {
     background-color: #252526;
     border-bottom: black 1px solid !important;
 }
 
-tr>td,
-tr>th,
-.tr>.td,
-.tr>.th,
+tr > td,
+tr > th,
+.tr > .td,
+.tr > .th,
 .cbi-section-table-row::before,
-#cbi-wireless>#wifi_assoclist_table>.tr:nth-child(2) {
+#cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
     border-top: 0;
 }
 
@@ -304,7 +314,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
     background-color: rgb(102, 102, 102) !important;
 }
 
-.cbi-section>h3:first-child,
+.cbi-section > h3:first-child,
 .panel-title,
 h3 {
     color: #ccc;
@@ -318,7 +328,7 @@ h4 {
     background: #282a2c;
 
     div {
-        background-color: #32325d !important;
+        background-color: var(--dark-primary) !important;
     }
 }
 
@@ -327,7 +337,7 @@ h4 {
 }
 
 .cbi-button {
-    color: #ccc !important;
+    color: #ffffff !important;
     background-color: #483d8b;
     background-color: var(--dark-primary);
 }
@@ -340,8 +350,8 @@ abbr {
     color: #5e72e4;
 }
 
-div>table>tbody>tr:nth-of-type(2n),
-div>.table>.tbody>.tr:nth-of-type(2n) {
+div > table > tbody > tr:nth-of-type(2n),
+div > .table > .tbody > .tr:nth-of-type(2n) {
     background-color: #252526;
 }
 
@@ -376,20 +386,20 @@ div>.table>.tbody>.tr:nth-of-type(2n) {
     }
 }
 
-.tabs>li[class~="active"]>a {
+.tabs > li[class~="active"] > a {
     color: #ccc;
 }
 
-.tabs>li[class~="active"],
-.tabs>li:hover {
+.tabs > li[class~="active"],
+.tabs > li:hover {
     border-bottom: 0.18751rem solid #483d8b;
     border-bottom: 0.18751rem solid var(--dark-primary);
     color: var(--dark-primary) !important;
     background-color: #181819;
 }
 
-.cbi-tabmenu>li>a,
-.tabs>li>a {
+.cbi-tabmenu > li > a,
+.tabs > li > a {
     color: #ccc;
 
     &:hover {
@@ -397,7 +407,7 @@ div>.table>.tbody>.tr:nth-of-type(2n) {
     }
 }
 
-.cbi-tabmenu>li {
+.cbi-tabmenu > li {
     background: #2d2d2d;
 }
 
@@ -405,18 +415,18 @@ div>.table>.tbody>.tr:nth-of-type(2n) {
     color: #ccc;
 }
 
-.cbi-tabmenu>li:hover {
+.cbi-tabmenu > li:hover {
     color: #ccc;
     background: #2d2d2d;
     border-bottom: 0.18751rem solid var(--dark-primary) !important;
 }
 
-.cbi-tabmenu>li[class~="cbi-tab"] {
+.cbi-tabmenu > li[class~="cbi-tab"] {
     background-color: #181819;
     border-bottom: 0.18751rem solid var(--dark-primary) !important;
 }
 
-.cbi-tabcontainer>.cbi-value:nth-of-type(2n) {
+.cbi-tabcontainer > .cbi-value:nth-of-type(2n) {
     background-color: #252526;
 }
 
@@ -432,12 +442,20 @@ input {
     box-shadow: none;
 }
 
+
 select:not([multiple="multiple"]):focus,
 input:focus {
     border-color: #483d8b !important;
     border-color: var(--dark-primary) !important;
     outline: 0;
 
+}
+
+select:not([multiple="multiple"]):focus,
+input:not(.cbi-button):focus,
+.cbi-dropdown:focus {
+    border-color: #5e72e4;
+    border-color: var(--dark-primary) !important;
 }
 
 select {
@@ -458,7 +476,7 @@ select {
     color: #ccc !important;
 }
 
-.cbi-value-field>ul>li .ifacebadge {
+.cbi-value-field > ul > li .ifacebadge {
     background-color: #3c3c3c;
 }
 
@@ -469,8 +487,14 @@ select {
 .cbi-input-textarea {
     background-color: #1e1e1e;
     color: #ccc;
+    border: 1px solid #3c3c3c !important;
 }
 
+textarea {
+    &:focus-visible {
+        border: 1px solid var(--dark-primary);
+    }
+}
 
 
 .cbi-section-remove:nth-of-type(2n),
@@ -478,11 +502,15 @@ select {
     background-color: #1e1e1e;
 }
 
-.node-system-packages>.main table tr td:nth-last-child(1) {
+.node-system-packages > .main table tr td:nth-last-child(1) {
     color: #ccc;
 
 }
 
+.cbi-tooltip {
+    background-color: var(--primary);
+    color: #fff;
+}
 
 .ifacebox {
     background-color: transparent !important;
@@ -490,7 +518,8 @@ select {
 }
 
 .ifacebox-head {
-    color: #666;
+    color: #ccc;
+    background: #666;
 }
 
 .ifacebox-body {
@@ -501,7 +530,7 @@ select {
     color: #333;
 }
 
-.zonebadge>.ifacebadge {
+.zonebadge > .ifacebadge {
     background-color: #3c3c3c;
 }
 
@@ -510,7 +539,7 @@ td.cbi-value-field var {
     color: #5e72e4;
 }
 
-#diag-rc-output>pre {
+#diag-rc-output > pre {
     color: #ccc;
     background-color: #1e1e1e;
 }
@@ -551,7 +580,7 @@ td.cbi-value-field var {
     border-right: #1e1e1e 1px solid;
 }
 
-#xhr_poll_status>.label.success {
+#xhr_poll_status > .label.success {
     color: #ccc !important;
 
     background-color: darkolivegreen !important;
@@ -607,13 +636,13 @@ fieldset[id^="cbi-apply-"] {
     background-color: #333333;
 }
 
-#detail-bubble>div {
+#detail-bubble > div {
     border: 1px solid #ccc;
     background: #252525;
 }
 
 .ifacebox-head.active {
-    background-color: #32325d !important;
+    background-color: var(--dark-primary) !important;
 }
 
 header .fill .status span[data-style="active"] {
@@ -622,11 +651,11 @@ header .fill .status span[data-style="active"] {
 }
 
 #cbi-wireless .td,
-#cbi-network .tr:first-child>.td,
-.table[width="100%"]>.tr:first-child>.td,
-[data-page="admin-network-diagnostics"] .tr>.td,
-.tr.table-titles>.th,
-.tr.cbi-section-table-titles>.th {
+#cbi-network .tr:first-child > .td,
+.table[width="100%"] > .tr:first-child > .td,
+[data-page="admin-network-diagnostics"] .tr > .td,
+.tr.table-titles > .th,
+.tr.cbi-section-table-titles > .th {
     background-color: #252526;
     border-bottom: black 1px solid !important;
 
@@ -638,16 +667,107 @@ header .fill .status span[data-style="active"] {
     box-shadow: none;
 }
 
-td>.ifacebadge,
-.td>.ifacebadge {
-
+td > .ifacebadge,
+.td > .ifacebadge {
+    color: #fff;
     background-color: #483d8b;
     background-color: var(--dark-primary);
     border: 0;
 }
 
+.alert, .alert-message {
+    background-color: #333;
+}
+
+.alert-message.warning {
+    background-color: #986400 !important;
+}
+
+.alert.error, .alert-message.error {
+    background-color: #784f00;
+}
+
+.alert h4, .alert-message h4 {
+    background-color: #784f00;
+    color: #ffbf00;
+}
+
+.alert-message [class="btn"] {
+    background-color: #777777;
+    color: #ccc;
+}
+
+.uci-dialog {
+    .cbi-section {
+
+        .uci-change-legend {
+
+            .uci-change-legend-label {
+
+                > ins {
+                    border-color: #00ad00;
+                    background-color: #688668;
+                }
+
+                > del {
+                    border-color: #c60000;
+                    background-color: #896565;
+                }
+
+                > var {
+                    background-color: #333;
+                    border-color: #666;
+
+                    ins {
+                        background-color: #688668;
+                    }
+
+                    del {
+                        background-color: #896565;
+                    }
+                }
+            }
+        }
+
+        .uci-change-list {
+            > var {
+                background-color: #333;
+                border-color: #666;
+
+                del {
+                    background-color: #896565;
+                }
+
+                ins {
+                    background-color: #688668;
+                }
+            }
+
+            > ins {
+                border-color: #00ad00;
+                background-color: #688668;
+            }
+
+            > del {
+                border-color: #c60000;
+                background-color: #896565;
+            }
+        }
+
+        .uci-change-list + .right {
+            .btn {
+                color: #ccc;
+            }
+
+            .cbi-button {
+                border: 1px solid #3c3c3c !important;
+            }
+        }
+    }
+}
+
 .btn.danger,
-.cbi-section-remove>.cbi-button,
+.cbi-section-remove > .cbi-button,
 .cbi-button-remove,
 .cbi-button-reset,
 .cbi-button-negative,
@@ -663,12 +783,12 @@ td>.ifacebadge,
 .cbi-section-error,
 #iptables,
 .Firewall form,
-#cbi-network>.cbi-section-node,
-#cbi-wireless>.cbi-section-node,
-#cbi-wireless>#wifi_assoclist_table,
+#cbi-network > .cbi-section-node,
+#cbi-wireless > .cbi-section-node,
+#cbi-wireless > #wifi_assoclist_table,
 [data-tab-title],
 [data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
-[data-page="admin-system-opkg"] #maincontent>.container {
+[data-page="admin-system-opkg"] #maincontent > .container {
     background: #1e1e1e !important;
     box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.35);
 }
@@ -686,7 +806,7 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
 
 [data-page="admin-system-flash"] {
     .modal {
-        label>input[type="checkbox"] {
+        label > input[type="checkbox"] {
             top: -0.35rem;
         }
 
@@ -706,7 +826,7 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
     }
 }
 
-.cbi-value input[type="password"]+.cbi-button-neutral {
+.cbi-value input[type="password"] + .cbi-button-neutral {
     background-color: #483d8b !important;
     background-color: var(--dark-primary) !important;
     border-color: var(--dark-primary) !important;
@@ -751,27 +871,27 @@ input,
     border-color: var(--dark-primary) !important;
 }
 
-.cbi-dropdown[open]>ul.dropdown {
+.cbi-dropdown[open] > ul.dropdown {
     background: #252526 !important;
-    color: #ccc !important;
+    color: #ffffff !important;
     box-shadow: none;
     border: 1px solid #3c3c3c !important;
 
 
 }
 
-.cbi-dropdown[open]>ul.dropdown li {
-    color: #ccc;
+.cbi-dropdown[open] > ul.dropdown li {
+    color: #ffffff;
     border-bottom: 1px solid #3c3c3c !important;
 }
 
-.cbi-dropdown[open]>ul.dropdown>li[selected] {
+.cbi-dropdown[open] > ul.dropdown > li[selected] {
     background-color: #483d8b !important;
     background-color: var(--dark-primary) !important;
     border-bottom: 1px solid #3c3c3c !important;
 }
 
-.cbi-dropdown[open]>ul.dropdown>li.focus {
+.cbi-dropdown[open] > ul.dropdown > li.focus {
     background: #483d8b;
     background: var(--dark-primary);
     outline: none;
@@ -781,7 +901,7 @@ input,
     background-color: #333333;
 }
 
-.cbi-dynlist>.item>span {
+.cbi-dynlist > .item > span {
     border: 1px solid #3c3c3c !important;
 }
 
@@ -802,7 +922,7 @@ input,
 
 .btn.primary,
 .cbi-page-actions .cbi-button-save,
-.cbi-page-actions .cbi-button-apply+.cbi-button-save,
+.cbi-page-actions .cbi-button-apply + .cbi-button-save,
 .cbi-button-add,
 .cbi-button-save,
 .cbi-button-positive,
@@ -822,6 +942,10 @@ input,
 [data-page="admin-system-startup"] textarea {
     color: #ccc;
     background-color: transparent;
+
+    &:focus-visible {
+        border: 1px solid var(--dark-primary);
+    }
 }
 
 [data-page="admin-network-firewall-custom"] #view p textarea,
@@ -831,7 +955,7 @@ input,
     background-color: transparent;
 }
 
-#view>.spinning {
+#view > .spinning {
     background: #333333 !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03) !important;
 }
@@ -853,10 +977,178 @@ input,
 
 
 @media screen and (max-width: 480px) {
-    .node-status-iptables>.main div>.cbi-map>form {
+    .node-status-iptables > .main div > .cbi-map > form {
         background-color: #1e1e1e;
         box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, .35);
     }
 
 
+}
+
+[data-page="admin-dashboard"] {
+    .main-right > #maincontent {
+        .Dashboard {
+            color: #ccc !important;
+
+            h3 {
+                color: #ccc;
+            }
+
+            hr {
+                border-top: 1px solid rgba(255, 255, 255, 1);
+            }
+
+            .dashboard-bg {
+                background-color: #333333;
+            }
+        }
+
+        .router-status-info .title img,
+        .lan-info .title img,
+        .wifi-info .title img {
+            filter: invert(90%);
+        }
+
+        tr {
+            border-top: thin solid #4d4d4d;
+
+            &:last-child {
+                border-bottom: thin solid #4d4d4d;
+            }
+        }
+    }
+}
+
+[data-page="admin-system-fileassistant"] {
+    .fb-container .panel-container {
+        border-bottom-color: #3c3c3c !important;
+    }
+
+    .fb-container td[class$="-icon"]::before {
+        filter: invert(0.7);
+    }
+}
+
+[data-page^="admin-services-openclash"] {
+    .cbi-tabmenu::-webkit-scrollbar-thumb {
+        background-color: #5b5b5b;
+    }
+
+    .cbi-tabmenu::-webkit-scrollbar-track {
+        background-color: rgba(60, 60, 60, 0.75);
+    }
+
+    #tab {
+        border-color: #3c3c3c;
+    }
+
+    #diag-rc-output > pre,
+    #dns-rc-output > pre {
+        color: #ccc;
+        border: 1px solid #3c3c3c !important;
+        background-color: #1e1e1e;
+    }
+
+    img[src$="arrow-clockwise-light.svg"],
+    img[src$="wrench-light.svg"],
+    img[src$="eye-light.svg"] {
+        filter: invert(0.9);
+    }
+}
+
+[data-page="admin-network-diagnostics"] {
+    .cbi-section {
+        background: #252526 !important;
+    }
+
+    textarea {
+        background: transparent;
+        border-radius: 0.25rem;
+        color: #ccc;
+        border: 1px solid #3c3c3c !important;
+    }
+
+    .tr > .td {
+        background-color: #252526 !important;
+    }
+}
+
+[data-page="admin-network-network"] {
+    .ifacebox-head[style*="--zone-color-rgb: 144, 240, 144"] {
+        background-color: rgb(73, 126, 73) !important;
+        color: #ccc !important;
+    }
+
+    .ifacebox-head[style*="--zone-color-rgb: 240, 144, 144;"] {
+        background-color: rgb(156, 79, 79) !important;
+        color: #ccc !important;
+    }
+
+    .ifacebox-head[style*="--zone-color-rgb: 238, 238, 238;"] {
+        background-color: #666 !important;
+    }
+}
+
+[data-page="admin-network-firewall-rules"] {
+    #cbi-firewall-rule {
+        .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
+            --zone-color-rgb: 156, 79, 79 !important;
+
+            strong {
+                color: #ccc !important;
+            }
+        }
+
+        .zonebadge[style*="--zone-color-rgb:238, 238, 238;"] {
+            --zone-color-rgb: 112, 112, 112 !important;
+
+            em {
+                color: #ccc !important;
+            }
+        }
+
+        > table > .cbi-section-table-row[data-title]::before {
+            background-color: #252526 !important;
+        }
+    }
+}
+
+[data-page="admin-network-network"],
+[data-page="admin-network-firewall-rules"] {
+    .cbi-dropdown {
+        .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
+            --zone-color-rgb: 156, 79, 79 !important;
+            color: #ccc !important;
+
+            strong {
+                color: #ccc !important;
+            }
+        }
+
+        .zonebadge[style*="--zone-color-rgb:144, 240, 144;"] {
+            --zone-color-rgb: 73, 126, 73 !important;
+            color: #ccc !important;
+
+            strong {
+                color: #ccc !important;
+            }
+        }
+
+        .zonebadge[style*="--zone-color-rgb:238, 238, 238;"] {
+            --zone-color-rgb: 112, 112, 112 !important;
+
+            strong {
+                color: #ccc !important;
+
+                + span {
+                    color: #ccc !important;
+                }
+            }
+        }
+    }
+}
+
+.btn {
+    background-color: rgb(112, 112, 112);
+    color: #fff;
 }
