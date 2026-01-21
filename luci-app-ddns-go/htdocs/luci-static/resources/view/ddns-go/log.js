@@ -13,7 +13,6 @@
 return view.extend({
 	render: function () {
 		var css = `
-			/* 日志框文本区域 */
 			#log_textarea pre {
 				padding: 10px; /* 内边距 */
 				border-bottom: 1px solid #ddd; /* 边框颜色 */
@@ -23,13 +22,10 @@ return view.extend({
 				word-wrap: break-word;
 				overflow-y: auto;
 			}
-			/* 5s 自动刷新文字 */
 			.cbi-section small {
 				margin-left: 1rem;
 				font-size: small; 
-				color: #666; /* 深灰色文字 */
 			}
-			/* 倒序显示相关样式 */
 			.log-container {
 				display: flex;
 				flex-direction: column;
@@ -49,7 +45,6 @@ return view.extend({
 				border-bottom: none;
 			}
 			.log-timestamp {
-				font-weight: bold;
 				margin-right: 10px;
 			}
 
