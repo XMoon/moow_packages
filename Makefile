@@ -4,12 +4,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=phantun
-PKG_VERSION:=0.6.0
+PKG_VERSION:=0.8.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/dndx/phantun/tar.gz/v${PKG_VERSION}?
-PKG_HASH:=c56dbf2dc78019389ad83da182265ae9291c024632b7e0be723095ef87ddb52d
+PKG_HASH:=fc435fa909f5410c482bde89d3b03b42a21f4e6314595400cf010c272ef8c023
 
 PKG_MAINTAINER:=XMoon <xmoonox@gmail.com>
 PKG_LICENSE:=MIT OR Apache-2.0
