@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * Copyright (C) 2018-2023 Ruilin Peng (Nick) <pymumu@gmail.com>.
+ * Copyright (C) 2018-2025 Ruilin Peng (Nick) <pymumu@gmail.com>.
  *
  * smartdns is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ return view.extend({
 				white-space: pre-wrap;
 				word-wrap: break-word;
 				overflow-y: auto;
-				max-height: 500px;
+				max-height: 650px;
 			}
 			#.description {
 				background-color: #33ccff;
@@ -84,13 +84,13 @@ return view.extend({
 
 		var clear_log_button = E('th', {}, [
 			E('button', {
-				'class': 'cbi-button cbi-button-danger',
+				'class': 'cbi-button cbi-button-remove',
 				'click': function (ev) {
 					ev.preventDefault();
 					var button = ev.target;
 					button.disabled = true;
 					button.textContent = _('Clear Logs...');
-					fs.exec_direct('/usr/libexec/smartdns-call', ['clear_log'])
+					fs.exec('/usr/libexec/smartdns-call', ['clear_log'])
 						.then(function () {
 							button.textContent = _('Logs cleared successfully!');
 							setTimeout(function () {
@@ -114,9 +114,9 @@ return view.extend({
 
 
 		poll.add(L.bind(function () {
-			return fs.exec_direct('/usr/libexec/smartdns-call', ['tail'])
+			return fs.exec('/usr/libexec/smartdns-call', ['tail'])
 				.then(function (res) {
-					var log = E('pre', { 'wrap': 'pre' }, [res.trim() || _('Log is clean.')]);
+					var log = E('pre', { 'wrap': 'pre' }, [res.stdout.trim() || _('Log is clean.')]);
 
 					dom.content(log_textarea, log);
 					log.scrollTop = log.scrollHeight;
@@ -135,9 +135,9 @@ return view.extend({
 
 		var back_smartdns_button = E('th', {}, [
 			E('button', {
-				'class': 'cbi-button cbi-button-danger',
+				'class': 'cbi-button cbi-button-apply',
 				'click': ui.createHandlerFn(this, function () {
-					window.location.href = "smartdns"
+					window.location.href = "/cgi-bin/luci/admin/services/smartdns"
 				})
 			}, _('Back SmartDNS'))
 		]);
