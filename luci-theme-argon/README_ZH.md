@@ -15,7 +15,7 @@
 [issues]: https://github.com/jerrykuku/luci-theme-argon/issues/new
 [issues-badge]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square
 [release]: https://github.com/jerrykuku/luci-theme-argon/releases
-[release-badge]: https://img.shields.io/github/v/release/jerrykuku/luci-theme-argon?include_prereleases&style=flat-square
+[release-badge]: https://img.shields.io/github/v/release/jerrykuku/luci-theme-argon?style=flat-square
 [download]: https://github.com/jerrykuku/luci-theme-argon/releases
 [download-badge]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total?style=flat-square
 [contact]: https://t.me/jerryk6
@@ -81,7 +81,7 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 
 ## 版本历史
 
-当前最新的版本为 v2.3.1 [点击这里][zh-cn-release-log]查看完整的版本历史日志.
+当前最新的版本为 v2.4.3 [点击这里][zh-cn-release-log]查看完整的版本历史日志.
 
 ## 快速开始
 
@@ -116,7 +116,7 @@ opkg install luci-theme-argon*.ipk
 ```bash
 opkg install luci-compat
 opkg install luci-lib-ipkg
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.1/luci-theme-argon_2.3.1_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.2/luci-theme-argon_2.3.2-r20250207_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
