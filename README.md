@@ -103,15 +103,32 @@ make package/feeds/moow_packages/luci-theme-argon/compile -j1 V=s
 - `smartdns-ui` 由 `smartdns` 目录一并产出
 - `luci-app-ddns-go` 和 `ddns-go` 可以分开编
 
-### 5. 批量编译
+### 5. 只并发编译本 feed 的包
 
-依赖都准备好以后，可以直接：
+如果不想触发整套 OpenWrt 已选包编译，只想快速编译 `moow_packages` 里的包，可以一次指定多个本 feed 的 `compile` 目标，并交给 `make -j$(nproc)` 并发执行：
+
+```bash
+make -j$(nproc) V=s \
+  package/feeds/moow_packages/smartdns/compile \
+  package/feeds/moow_packages/luci-app-smartdns/compile \
+  package/feeds/moow_packages/ddns-go/compile \
+  package/feeds/moow_packages/luci-app-ddns-go/compile \
+  package/feeds/moow_packages/naiveproxy/compile \
+  package/feeds/moow_packages/phantun/compile \
+  package/feeds/moow_packages/luci-theme-argon/compile
+```
+
+这会编译上面显式指定的包目标，以及它们需要的依赖。正常快速构建时可以保留 `-j$(nproc)`；如果只是想看更少日志，可以去掉 `V=s`；排查失败时再改回单包 `-j1 V=s`。
+
+### 6. 编译当前配置里的全部已选目标
+
+如果确实想编译当前 `.config` 里选中的全部目标，例如完整固件或 SDK 中所有已选包，才直接使用：
 
 ```bash
 make -j$(nproc)
 ```
 
-### 6. 产物位置
+### 7. 产物位置
 
 编译产物通常在：
 
@@ -188,9 +205,12 @@ unset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY
 
 make menuconfig
 
-make package/feeds/moow_packages/smartdns/compile -j1 V=s
-make package/feeds/moow_packages/luci-app-smartdns/compile -j1 V=s
-make package/feeds/moow_packages/ddns-go/compile -j1 V=s
-
-make -j$(nproc)
+make -j$(nproc) V=s \
+  package/feeds/moow_packages/smartdns/compile \
+  package/feeds/moow_packages/luci-app-smartdns/compile \
+  package/feeds/moow_packages/ddns-go/compile \
+  package/feeds/moow_packages/luci-app-ddns-go/compile \
+  package/feeds/moow_packages/naiveproxy/compile \
+  package/feeds/moow_packages/phantun/compile \
+  package/feeds/moow_packages/luci-theme-argon/compile
 ```
