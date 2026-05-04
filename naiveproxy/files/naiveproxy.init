@@ -6,16 +6,23 @@ START=99
 
 NAME="naiveproxy"
 
-start_service() {
-	config_load "$NAME"
-	config_get_bool "enable" "config" "enable" "0"
-	[ "$enable" -eq "1" ] || return 1
+start_instance() {
+	local section="$1"
+	local enable listen_addr server_addr extra_argument
 
-	config_get "listen_addr" "config" "listen_addr"
-	config_get "server_addr" "config" "server_addr"
-	config_get "extra_argument" "config" "extra_argument"
+	config_get_bool "enable" "$section" "enable" "0"
+	[ "$enable" -eq "1" ] || return 0
 
-	procd_open_instance naiveproxy
+	config_get "listen_addr" "$section" "listen_addr"
+	config_get "server_addr" "$section" "server_addr"
+	config_get "extra_argument" "$section" "extra_argument"
+
+	if [ -z "$listen_addr" ] || [ -z "$server_addr" ]; then
+		logger -t "$NAME" "Skip instance '$section': listen_addr and server_addr are required"
+		return 1
+	fi
+
+	procd_open_instance "$section"
 
 	procd_set_param command naive
 	procd_append_param command --listen="$listen_addr"
@@ -30,6 +37,12 @@ start_service() {
 	procd_close_instance
 }
 
+start_service() {
+	config_load "$NAME"
+	config_foreach start_instance naiveproxy
+	return 0
+}
+
 service_triggers() {
-        procd_add_reload_trigger "$NAME"
+	procd_add_reload_trigger "$NAME"
 }
