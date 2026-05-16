@@ -18,7 +18,7 @@
 2. 下载 release 源码包并计算 `PKG_HASH`。
 
    ```bash
-   version="148.0.7778.96-2"
+   version="148.0.7778.96-5"
    curl -L --fail -o "/tmp/naiveproxy-v${version}.tar.gz" \
      "https://codeload.github.com/klzgrad/naiveproxy/tar.gz/v${version}"
    sha256sum "/tmp/naiveproxy-v${version}.tar.gz"
@@ -49,6 +49,8 @@
    `PGO_VER` 是 `linux.pgo.txt` 中 `chrome-linux-` 和 `.profdata` 之间的部分。
 
 4. 下载 clang 与 PGO profile，计算各自 hash。
+
+   如果新 release 读取出的 clang/PGO pin 与当前 `Makefile` 完全相同，可以复用已有下载文件，但仍要确认 `Makefile` 中的 hash 与文件匹配。
 
    ```bash
    clang_ver="23-init-5669-g8a0be0bc-4"
@@ -86,8 +88,10 @@
 
    cp naiveproxy/Makefile "$sdk/feeds/moow_packages/naiveproxy/Makefile"
    cp "/tmp/naiveproxy-v${version}.tar.gz" "$sdk/dl/naiveproxy-${version}.tar.gz"
-   cp "/tmp/clang-llvmorg-${clang_ver}.tar.xz" "$sdk/dl/clang-llvmorg-${clang_ver}.tar.xz"
-   cp "/tmp/chrome-linux-${pgo_ver}.profdata" "$sdk/dl/chrome-linux-${pgo_ver}.profdata"
+   [ -f "/tmp/clang-llvmorg-${clang_ver}.tar.xz" ] && \
+     cp "/tmp/clang-llvmorg-${clang_ver}.tar.xz" "$sdk/dl/clang-llvmorg-${clang_ver}.tar.xz"
+   [ -f "/tmp/chrome-linux-${pgo_ver}.profdata" ] && \
+     cp "/tmp/chrome-linux-${pgo_ver}.profdata" "$sdk/dl/chrome-linux-${pgo_ver}.profdata"
 
    make -C "$sdk" package/feeds/moow_packages/naiveproxy/download V=s
    make -C "$sdk" package/feeds/moow_packages/naiveproxy/compile V=s -j"$(nproc)"
@@ -106,4 +110,3 @@
    ```text
    bin/packages/x86_64/moow_packages/naiveproxy-<version-with-dots>-r1.apk
    ```
-
